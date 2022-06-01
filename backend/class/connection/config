@@ -1,0 +1,9 @@
+{
+    "connection": {
+        "server": "localhost",
+        "user": "root",
+        "password": "",
+        "database": "jamusaAngular",
+        "port": "3306"
+    }
+}
