@@ -2,3 +2,18 @@
     color: #fff !important;
     border-color: #fff !important;
 }
+
+/* Menú */
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffffc2 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
