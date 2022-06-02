@@ -48,6 +48,7 @@ class connection
     {
         $results = $this->connection->query($sqlStr);
         $resultArray = array();
+
         foreach ($results as $key) {
             $resultArray[] = $key;
         }
@@ -60,6 +61,7 @@ class connection
         return $this->connection->affected_rows;
     }
 
+    // Insert
     public function nonQueryId($sqlStr)
     {
         $results = $this->connection->query($sqlStr);
@@ -69,5 +71,11 @@ class connection
         } else {
             return 0;
         }
+    }
+
+    // Encrypt
+    protected function encrypt($string)
+    {
+        return md5($string);
     }
 }
