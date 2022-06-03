@@ -26,7 +26,7 @@ class auth extends connection
                 if ($password == $data[0]["password"]) {
                     // verifica si el usuario está activo
                     if ($data[0]["status"] == "active") {
-                        $verify = $this->insertToken($data[0]["userId"]);
+                        $verify = $this->insertToken($data[0]["id"]);
                         if ($verify) {
                             // token guardado
                             $result = $_responses->response;
@@ -56,7 +56,7 @@ class auth extends connection
     private function getDataUser($username)
     {
 
-        $query = "SELECT userId, username, name, surnames, email, password, status FROM users where username = '$username'";
+        $query = "SELECT id, username, name, surnames, email, password, status FROM users where username = '$username'";
         $data = parent::getData($query);
 
         if (isset($data[0]["username"])) {
@@ -66,14 +66,14 @@ class auth extends connection
         }
     }
 
-    private function insertToken($userId)
+    private function insertToken($id)
     {
 
         $val = true;
         $token = bin2hex(openssl_random_pseudo_bytes(48, $val));
         $date = date("Y-m-d H:i");
         $status = "active";
-        $query = "INSERT INTO user_tokens (userId, token,status, date) VALUES('$userId', '$token', '$status', '$date')";
+        $query = "INSERT INTO user_tokens (id, token,status, date) VALUES('$id', '$token', '$status', '$date')";
         $check = parent::nonQuery($query);
 
         if ($check) {
