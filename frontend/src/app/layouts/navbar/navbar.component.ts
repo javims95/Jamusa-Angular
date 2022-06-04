@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RoleGuard } from 'src/app/guards/role.guard';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  decodeToken: any;
 
-  constructor() { }
+  constructor(
+    private roleGuard: RoleGuard
+  ) { }
 
   ngOnInit(): void {
+    
+  }
+
+  isAdmin() {
+    const role_id = this.roleGuard.decodeToken()['role_id'];
+    if(role_id !== 'admin') {
+      return false;
+    }
+    return true;
   }
 
 }

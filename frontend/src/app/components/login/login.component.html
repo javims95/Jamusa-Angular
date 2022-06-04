@@ -7,16 +7,14 @@
 
                         <h3 class="mb-5 text-center">Iniciar Sesión</h3>
 
-                        <label for="email_L" class="form-label">Confirmar contraseña</label>
+                        <label class="form-label">Nombre de Usuario</label>
                         <div class="form-outline mb-4">
-                            <input type="email" id="email_L"
-                                class="form-control form-control-lg" />
+                            <input [(ngModel)]="user.username" type="email" class="form-control form-control-lg" />
                         </div>
 
-                        <label for="password_L" class="form-label">Confirmar contraseña</label>
+                        <label class="form-label">Contraseña</label>
                         <div class="form-outline mb-4">
-                            <input type="password" id="password_L"
-                                class="form-control form-control-lg" />
+                            <input [(ngModel)]="user.password" type="password" class="form-control form-control-lg" />
                         </div>
 
                         <!-- Checkbox -->
@@ -26,7 +24,7 @@
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary btn-lg gap-2" type="submit">Login</button>
+                            <button class="btn btn-primary btn-lg gap-2" (click)="login()">Login</button>
                         </div>
 
                         <hr class="my-4">

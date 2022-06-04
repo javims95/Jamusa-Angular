@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
                 </li> 
+                <li *ngIf="isAdmin()" class="nav-item">
+                    <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+                </li> 
                 
             </ul>
             <form class="d-flex mx-auto" role="search">
