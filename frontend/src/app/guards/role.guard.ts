@@ -15,21 +15,28 @@ export class RoleGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    const expectedRole = route.data['expectedRole'];
-    const role_id = this.decodeToken()['role_id'];
+    if (localStorage.getItem('token')) {
 
-    if (!this.authService.isAuth() || role_id !== expectedRole) {
-      console.log('Usuario no autorizado para la vista');
-      this.router.navigate(['login']);
+      const expectedRole = route.data['expectedRole'];
+      const role_id = this.decodeToken()['role_id'];
+
+      if (!this.authService.isAuth() || role_id !== expectedRole) {
+        console.log('Usuario no autorizado para la vista');
+        this.router.navigate(['login']);
+        return false;
+      }
+      return true;
+    } else {
       return false;
     }
-    return true;
   }
 
   decodeToken() {
-    const token = localStorage.getItem('token');
-    const tokenDecoded: any = decode(token!);
-    return tokenDecoded;
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      const tokenDecoded: any = decode(token!);
+      return tokenDecoded;
+    }
   }
 
 }

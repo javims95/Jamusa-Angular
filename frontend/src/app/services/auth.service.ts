@@ -20,7 +20,7 @@ export class AuthService {
     return this.http.post(`${this.URL}/user/login`, user);
   }
 
-  isAuth(): boolean {
+  isAuth(): boolean {    
     const token = localStorage.getItem('token');
     if(this.jwtHerlper.isTokenExpired(token!) || !localStorage.getItem('token')) {
       return false;

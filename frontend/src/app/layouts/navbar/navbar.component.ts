@@ -14,15 +14,21 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    this.isAdmin();
   }
 
   isAdmin() {
-    const role_id = this.roleGuard.decodeToken()['role_id'];
-    if(role_id !== 'admin') {
+    if (localStorage.getItem('token')) {
+      const role_id = this.roleGuard.decodeToken()['role_id'];
+      if (role_id !== 'admin') {
+        return false;
+      }
+      return true;
+
+    } else {
+
       return false;
     }
-    return true;
   }
 
 }
