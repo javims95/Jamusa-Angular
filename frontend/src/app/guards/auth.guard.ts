@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,12 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) { }
 
   canActivate(): boolean {
-    if (!this.authService.isAuth()) {
+    if (!this.userService.isAuth()) {
       // console.log('Token no válido');
       // Redireccion a login
       this.router.navigate(['login']);

@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
         console.log(rows);
         if (rows.length > 0) {
           let data = JSON.stringify(rows[0]);
-          const token = jwt.sign(data, 'stil');          
+          const token = jwt.sign(data, 'stil');
           res.json({ token });
         } else {
           res.json('Usuario o clave incorrectos');
@@ -36,11 +36,29 @@ router.post('/login', (req, res) => {
       }
     }
   )
+});
+
+router.post('/register', (req, res) => {
+  const { name, surname, username, email, password, confirm_password } = req.body;
+  if (password == confirm_password) {
+    mysqlConnection.query('insert into user (name, surname, username, email, password) values (?, ?, ?, ?, ?)',
+      [name, surname, username, email, password],
+      (err, rows, fields) => {
+        if (!err) {
+          res.json('Usuario creado correctamente');
+        } else {
+          res.status(401).json('Ya existe un cliente con el mismo correo electrónico o nombre de usuario');
+        }
+      }
+    )
+  } else {
+    res.status(401).json('Las contraseñas no coinciden');
+  }
 })
 
-router.post('/test', verifyToken, (req, res) => {
-  res.json('Informacion secreta');
-})
+// router.post('/test', verifyToken, (req, res) => {
+//   res.json('Informacion secreta');
+// })
 
 function verifyToken(req, res, next) {
   if (!req.headers.authorization) return res.status(401).json('La información de autenticación necesaria falta o no es válida para el recurso.');

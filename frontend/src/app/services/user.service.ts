@@ -7,7 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class UserService {
 
   private URL = 'http://localhost:3000';
 
@@ -18,6 +18,10 @@ export class AuthService {
 
   login(user:any) {
     return this.http.post(`${this.URL}/user/login`, user);
+  }
+
+  register(user:any) {
+    return this.http.post(`${this.URL}/user/register`, user);
   }
 
   isAuth(): boolean {    
