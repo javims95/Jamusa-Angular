@@ -4,6 +4,7 @@ const router = express.Router();
 const mysqlConnection = require('../connection/connection');
 
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 
 router.get('/', (req, res) => {
@@ -41,16 +42,18 @@ router.post('/login', (req, res) => {
 router.post('/register', (req, res) => {
   const { name, surname, username, email, password, confirm_password } = req.body;
   if (password == confirm_password) {
-    mysqlConnection.query('insert into user (name, surname, username, email, password) values (?, ?, ?, ?, ?)',
-      [name, surname, username, email, password],
-      (err, rows, fields) => {
-        if (!err) {
-          res.json('Usuario creado correctamente');
-        } else {
-          res.status(401).json('Ya existe un cliente con el mismo correo electrónico o nombre de usuario');
+    bcrypt.hash(password, 10, function (err, encryptPassword) {
+      mysqlConnection.query('insert into user (name, surname, username, email, password) values (?, ?, ?, ?, ?)',
+        [name, surname, username, email, encryptPassword],
+        (err, rows, fields) => {
+          if (!err) {
+            res.json('Usuario creado correctamente');
+          } else {
+            res.status(401).json('Ya existe un cliente con el mismo correo electrónico o nombre de usuario');
+          }
         }
-      }
-    )
+      )
+      });
   } else {
     res.status(401).json('Las contraseñas no coinciden');
   }

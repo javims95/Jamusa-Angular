@@ -28,15 +28,19 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.submitted = true;
-    
-    if(this.loginForm.invalid) {
+
+    if (this.loginForm.invalid) {
       return;
     }
 
     const user = this.loginForm.value;
-    this.userService.login(user).subscribe((res:any) => {
-      localStorage.setItem('token', res.token);
-      this.router.navigate(['my-account']);
+    this.userService.login(user).subscribe((res: any) => {
+      if (res.token !== undefined) {
+        localStorage.setItem('token', res.token);
+        // this.router.navigate(['my-account']);
+      } else {
+        localStorage.removeItem('token');
+      }
     });
   }
 
