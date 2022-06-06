@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const user = JSON.stringify(this.registerForm.value, null, 4);
+    const user = this.registerForm.value;
     this.userService.register(user).subscribe((res: any) => {
       this.router.navigate(['my-account']);
     });
