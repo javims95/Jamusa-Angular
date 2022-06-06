@@ -1,45 +1,134 @@
+<app-navbar></app-navbar>
+
 <section class="vh-100 bg-dark">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5">
+    <div class="container pt-1 pb-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Registro</h3>
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-                        <h3 class="mb-5 text-center">Registro</h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
 
-                        <label for="name" class="form-label">Nombre</label>
-                        <div class="form-outline mb-4">
-                            <input type="text" id="name" class="form-control form-control-lg" />
-                        </div>
+                                    <label class="form-label">Nombre</label>
+                                    <div class="form-outline mb-4">
+                                        <input formControlName="name"
+                                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors}" type="text"
+                                            class="form-control form-control-lg" />
+                                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['name'].errors['required']">El nombre es obligatorio</div>
+                                        </div>
+                                    </div>
 
-                        <label for="surname" class="form-label">Apellidos</label>
-                        <div class="form-outline mb-4">
-                            <input type="text" id="surname"
-                                class="form-control form-control-lg" />
-                        </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
 
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <div class="form-outline mb-4">
-                            <input type="email" id="Email"
-                                class="form-control form-control-lg" />
-                        </div>
+                                    <label class="form-label">Apellidos</label>
+                                    <div class="form-outline mb-4">
+                                        <input formControlName="surname"
+                                            [ngClass]="{ 'is-invalid': submitted && f['surname'].errors }" type="text"
+                                            class="form-control form-control-lg" />
+                                        <div *ngIf="submitted && f['surname'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['surname'].errors['required']">Los apellidos son obligatorios
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        <label for="password" class="form-label">Contraseña</label>
-                        <div class="form-outline mb-4">
-                            <input type="password" id="Password"
-                                class="form-control form-control-lg" />
-                        </div>
+                                </div>
+                            </div>
 
-                        <label for="Password-2" class="form-label">Confirmar contraseña</label>
-                        <div class="form-outline mb-4">
-                            <input type="password" id="Password-2"
-                                class="form-control form-control-lg" />
-                        </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
 
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-primary btn-lg gap-2" type="submit">Enviar</button>
-                        </div>
+                                    <label class="form-label">Nombre de Usuario</label>
+                                    <div class="form-outline mb-4">
+                                        <input formControlName="username"
+                                            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" type="text"
+                                            class="form-control form-control-lg" />
+                                        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['username'].errors['required']">El nombre de usuario es
+                                                obligatorio</div>
+                                        </div>
+                                    </div>
 
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <label class="form-label">Correo Electrónico</label>
+                                    <div class="form-outline mb-4">
+                                        <input formControlName="email"
+                                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" type="email"
+                                            class="form-control form-control-lg" />
+                                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['email'].errors['required']">El correo electrónico es
+                                                obligatorio
+                                            </div>
+                                            <div *ngIf="f['email'].errors['email']">Debe ser un correo electrónico
+                                                válido
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <label class="form-label">Contraseña</label>
+                                    <div class="form-outline mb-4">
+                                        <input formControlName="password"
+                                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                            type="password" class="form-control form-control-lg" />
+                                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['password'].errors['required']">La contraseña es obligatoria
+                                            </div>
+                                            <div *ngIf="f['password'].errors['minlength']">La contraseña debe contener
+                                                al menos 6 caracteres</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <label class="form-label">Confirmar contraseña</label>
+                                    <div class="form-outline mb-4">
+                                        <input formControlName="confirmPassword"
+                                            [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+                                            type="password" class="form-control form-control-lg" />
+                                        <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['confirmPassword'].errors['required']">La confirmación de
+                                                contraseña es obligatoria</div>
+                                            <div *ngIf="f['confirmPassword'].errors['mustMatch']">Las contraseñas no
+                                                coinciden</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <!-- Checkbox -->
+                                    <div class="form-check d-flex justify-content-start mb-4">
+                                        <input class="form-check-input" formControlName="acceptTerms"
+                                            [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }"
+                                            type="checkbox" />
+                                        <label class="form-check-label ms-2" for="form1Example3"> Acepto la <a href="#">política de privacidad</a> </label>
+                                        <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">Aceptar la política de privacidad es obligatorio</div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-2 d-grid gap-2">
+                                <button (click)="register()" class="btn btn-primary btn-lg gap-2" type="submit">Enviar</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>

@@ -12,12 +12,13 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 
 // Modules
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 // Providers
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     MyAccountComponent,
     FooterComponent,
     AdminComponent,
+    AdminNavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
