@@ -6,38 +6,46 @@
             <div ngI class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5">
-
                         <h3 class="mb-5 text-center">Iniciar Sesión</h3>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-                        <label class="form-label">Nombre de Usuario</label>
-                        <div class="form-outline mb-4">
-                            <input [(ngModel)]="user.username" type="email" class="form-control form-control-lg" />
-                        </div>
+                            <label class="form-label">Nombre de Usuario</label>
+                            <div class="form-outline mb-4">
+                                <input formControlName="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors}" type="text" class="form-control form-control-lg" />
+                                <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['username'].errors['required']">El nombre de usuario es obligatorio</div>
+                                </div>
+                            </div>
 
-                        <label class="form-label">Contraseña</label>
-                        <div class="form-outline mb-4">
-                            <input [(ngModel)]="user.password" type="password" class="form-control form-control-lg" />
-                        </div>
+                            <label class="form-label">Contraseña</label>
+                            <div class="form-outline mb-4">
+                                <input formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors}" type="password" class="form-control form-control-lg" />
+                                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['password'].errors['required']">La contraseña es obligatorio</div>
+                                    <div *ngIf="f['password'].errors['minlength']">La contraseña debe contener al menos 6 caracteres</div>
+                                </div>
+                            </div>
 
-                        <!-- Checkbox -->
-                        <div class="form-check d-flex justify-content-start mb-4">
-                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                            <label class="form-check-label ms-2" for="form1Example3"> Recordar contraseña </label>
-                        </div>
+                            <!-- Checkbox -->
+                            <div class="form-check d-flex justify-content-start mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                                <label class="form-check-label ms-2" for="form1Example3"> Recordar contraseña </label>
+                            </div>
 
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-primary btn-lg gap-2" (click)="login()">Login</button>
-                        </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-lg gap-2" (click)="login()">Login</button>
+                            </div>
 
-                        <hr class="my-4">
+                            <hr class="my-4">
 
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-                                type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
-                            <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-                                type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
-                        </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
+                                    type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
+                                <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
+                                    type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
+                            </div>
 
+                        </form>
                     </div>
                 </div>
             </div>
