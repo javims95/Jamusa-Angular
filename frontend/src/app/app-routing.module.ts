@@ -14,7 +14,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'myAccount',
+    path: 'my-account',
     component: MyAccountComponent
   },
   {

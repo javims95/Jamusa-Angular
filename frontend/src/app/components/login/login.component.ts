@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -37,8 +39,9 @@ export class LoginComponent implements OnInit {
     this.userService.login(user).subscribe((res: any) => {
       if (res.token !== undefined) {
         localStorage.setItem('token', res.token);
-        // this.router.navigate(['my-account']);
+        this.router.navigate(['my-account']);
       } else {
+        $("#errorLogin").modal('show');
         localStorage.removeItem('token');
       }
     });

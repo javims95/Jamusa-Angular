@@ -19,25 +19,79 @@ router.get('/', (req, res) => {
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
-  mysqlConnection.query('select id, username, role_id from user where username=? and password=?',
-    [username, password],
+  mysqlConnection.query('select * from user where username = ?',
+    [username],
     (err, rows, fields) => {
-      if (!err) {
-        console.log(rows);
-        if (rows.length > 0) {
-          let data = JSON.stringify(rows[0]);
-          const token = jwt.sign(data, 'stil');
-          res.json({ token });
-        } else {
-          res.json('Usuario o clave incorrectos');
-        }
+      const passwordEncrypt = rows[0].password;
+      if (rows.length > 0) {
+        bcrypt.compare(password, passwordEncrypt, function (err, result) {
+          if (result == true) {
+            delete rows[0].password;
+            let data = JSON.stringify(rows[0]);
+            const token = jwt.sign(data, 'stil');
+            res.json({ token });
 
-      } else {
-        console.log(err);
+          } else {
+            res.status(401).json('La contraseña no es correcta');
+          }
+        })
       }
     }
   )
-});
+})
+
+// router.post('/login', (req, res) => {
+//   const { username, password } = req.body;
+//   mysqlConnection.query('select id, username, role_id from user where username=? and password=?',
+//     [username, password],
+//     bcrypt.hash(password, 10, function (err, encryptPassword) {
+//       console.log(password);
+//       console.log(encryptPassword);
+//       if (password == encryptPassword) {
+
+//         (err, rows, fields) => {
+//           if (!err) {
+//             console.log(rows);
+//             if (rows.length > 0) {
+//               let data = JSON.stringify(rows[0]);
+//               const token = jwt.sign(data, 'stil');
+//               res.json({ token });
+//             } else {
+//               res.json('Usuario o clave incorrectos');
+//             }
+
+//           } else {
+//             console.log(err);
+//           }
+//         }
+//       } else {
+//         res.status(401).json('Contraseña incorrecta');
+//       }
+//     })
+//   )
+// });
+
+// router.post('/login', (req, res) => {
+//   const { username, password } = req.body;
+//   mysqlConnection.query('select id, username, role_id from user where username=? and password=?',
+//     [username, password],
+//     (err, rows, fields) => {
+//       if (!err) {
+//         if (rows.length > 0) {
+//           console.log('Hola');
+//           let data = JSON.stringify(rows[0]);
+//           const token = jwt.sign(data, 'stil');
+//           res.json({ token });
+//         } else {
+//           res.json('Usuario o clave incorrectos');
+//         }
+
+//       } else {
+//         console.log(err);
+//       }
+//     }
+//   )
+// });
 
 router.post('/register', (req, res) => {
   const { name, surname, username, email, password, confirm_password } = req.body;
@@ -53,7 +107,7 @@ router.post('/register', (req, res) => {
           }
         }
       )
-      });
+    });
   } else {
     res.status(401).json('Las contraseñas no coinciden');
   }
@@ -76,6 +130,22 @@ function verifyToken(req, res, next) {
   }
 
 }
+
+
+// var jsonVar = {
+//   id: 1,
+//   name: '',
+//   surname: '',
+//   username: 'javierms95',
+//   email: 'javier_ms95@hotmail.com',
+//   password: '123456',
+//   role_id: 'admin'
+// }
+
+// console.log(jsonVar);//json original
+
+// delete jsonVar.password
+// console.log(jsonVar);//json sin su elemento 
 
 
 module.exports = router;

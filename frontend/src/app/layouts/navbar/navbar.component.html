@@ -21,7 +21,7 @@
                 <button class="btn btn-outline-white" type="submit">Search</button>
             </form>
             <ul class="navbar-nav  mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
+                <li *ngIf="!isAuth()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" routerLinkActive="active" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user"></i> Mi Cuenta
@@ -31,6 +31,9 @@
                         <li><a class="dropdown-item" routerLink="/register" routerLinkActive="active">Register</a></li>
                     </ul>
                 </li>
+                <li *ngIf="isAuth()" class="nav-item">
+                    <a class="nav-link" routerLink="/my-account" routerLinkActive="active"><i class="fa-solid fa-user"></i> Mi Cuenta</a>
+                </li> 
             </ul>
         </div>
     </div>

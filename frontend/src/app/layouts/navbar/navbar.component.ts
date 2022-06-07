@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleGuard } from 'src/app/guards/role.guard';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,8 @@ export class NavbarComponent implements OnInit {
   decodeToken: any;
 
   constructor(
-    private roleGuard: RoleGuard
+    private roleGuard: RoleGuard,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class NavbarComponent implements OnInit {
 
       return false;
     }
+  }
+
+  isAuth(): boolean {
+    return this.userService.isAuth();
   }
 
 }
