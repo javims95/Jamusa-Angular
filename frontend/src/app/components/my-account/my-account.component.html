@@ -1,1 +1,72 @@
-<app-navbar></app-navbar>
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4 order-tbl-first">
+            <div class="m-4">
+                <nav class="nav nav-pills flex-column">
+                    <a href="#desktop" class="nav-item nav-link active" data-bs-toggle="tab">
+                        <i class="fa-solid fa-gauge-high me-2"></i> Escritorio
+                    </a>
+                    <a href="#orders" class="nav-item nav-link" data-bs-toggle="tab">
+                        <i class="fa-solid fa-basket-shopping me-2"></i> Pedidos
+                    </a>
+                    <a href="#address" class="nav-item nav-link" data-bs-toggle="tab">
+                        <i class="fa-solid fa-address-card me-2"></i> Dirección
+                    </a>
+                    <a href="#account" class="nav-item nav-link" data-bs-toggle="tab">
+                        <i class="fa-solid fa-user me-2"></i> Detalles de la cuenta
+                    </a>
+                    <a href="#reset_password" class="nav-item nav-link" data-bs-toggle="tab">
+                        <i class="fa-solid fa-lock me-2"></i> Cambiar contraseña
+                    </a>
+                    <a href="#logout" (click)="logout()" class="nav-item nav-link link-danger">
+                        <i class="fa-solid fa-right-from-bracket me-2"></i> Cerrar sesión
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-8 order-tbl-last">
+            <div class="m-4">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="desktop">
+                        <h4 class="mt-2">Escritorio</h4>
+                        <p>Hola admin95 (¿no eres admin95? <a (click)="logout()" href="#logout">Cerrar sesión</a>)</p>
+                        <p>Desde el escritorio de tu cuenta puedes ver tus pedidos recientes, gestionar tus direcciones de envío y facturación y editar tu contraseña y los detalles de tu cuenta.</p>
+                    </div>
+                    <div class="tab-pane fade show" id="orders">
+                        <h4 class="mt-2">Home tab content</h4>
+                        <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher
+                            voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin.
+                            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor,
+                            williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+                            synth.</p>
+                    </div>
+                    <div class="tab-pane fade" id="address">
+                        <h4 class="mt-2">Profile tab content</h4>
+                        <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id
+                            gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut.
+                            Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed
+                            consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+                    </div>
+                    <div class="tab-pane fade" id="account">
+                        <h4 class="mt-2">Messages tab content</h4>
+                        <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit
+                            velit. Donec at erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat
+                            massa vestibulum laoreet. Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci
+                            lorem. Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus et magnis.
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="reset_password">
+                        <h4 class="mt-2">Messages tab content</h4>
+                        <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit
+                            velit. Donec at erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat
+                            massa vestibulum laoreet. Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci
+                            lorem. Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus et magnis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

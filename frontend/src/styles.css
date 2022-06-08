@@ -9,7 +9,8 @@
     color: #ffffffc2 !important;
 }
 
-.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .show>.nav-link {
     color: #fff !important;
     font-weight: 600;
 }
@@ -17,9 +18,36 @@
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
- }
+}
 
 /* Toastr */
 .toast-top-right {
     top: 10% !important;
+}
+
+/* Ordenar columnas mi cuenta */
+@media (max-width: 768px) {
+    .order-tbl-first {
+        order: -1 !important;
+    }
+    .order-tbl-last {
+        order: 6!important;
+    }
+}
+
+@media (min-width: 768px) {
+    .order-tbl-first {
+        order: 6 !important;
+    }
+    .order-tbl-last {
+        order: -1!important;
+    }
+}
+
+/* Background hover li */
+nav.nav.nav-pills.flex-column a.nav-item.nav-link:hover {
+    background: #e7e7e7;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link:hover {
+background: #0d6efd !important;
 }

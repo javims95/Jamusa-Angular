@@ -11,7 +11,7 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
                 </li> 
-                <li *ngIf="isAdmin()" class="nav-item">
+                <li  class="nav-item">
                     <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
                 </li> 
                 
@@ -33,10 +33,7 @@
                 </li>
                 <li *ngIf="isAuth()" class="nav-item">
                     <a class="nav-link" routerLink="/my-account" routerLinkActive="active"><i class="fa-solid fa-user"></i> Mi Cuenta</a>
-                </li> 
-                <li *ngIf="isAuth()" class="nav-item">
-                    <button class="btn btn-danger" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</button>
-                </li> 
+                </li>
             </ul>
         </div>
     </div>
