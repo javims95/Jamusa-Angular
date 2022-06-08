@@ -83,7 +83,7 @@ app.post('/api/login', async (req, res) => {
 })
 
 app.post('/api/register', async (req, res) => {
-	const { name, surname, username, email, password: plainTextPassword } = req.body
+	const { name, surname, username, email, password: plainTextPassword, confirm_password } = req.body
 
 	if (!name || typeof name !== 'string') {
 		return res.json({ status: 'error', error: 'Nombre con formato incorrecto' })
@@ -109,6 +109,13 @@ app.post('/api/register', async (req, res) => {
 		return res.json({
 			status: 'error',
 			error: 'La contraseña es muy corta. Debe tener como mínimo 6 caracteres.'
+		})
+	}
+
+	if (plainTextPassword !== confirm_password) {
+		return res.json({
+			status: 'error',
+			error: 'Las contraseñas no coinciden'
 		})
 	}
 

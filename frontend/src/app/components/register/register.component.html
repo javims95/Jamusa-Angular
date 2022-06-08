@@ -66,12 +66,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4 pb-2">
-
+                                    
                                     <label class="form-label">Confirmar contraseña</label>
                                     <div class="form-outline">
                                         <input formControlName="confirm_password" [ngClass]="{ 'is-invalid': submitted && f['confirm_password'].errors }" type="password" class="form-control form-control-lg" />
                                         <div *ngIf="submitted && f['confirm_password'].errors" class="invalid-feedback">
                                             <div *ngIf="f['confirm_password'].errors['required']">La confirmación de contraseña es obligatoria</div>
+                                            <div *ngIf="f['confirm_password'].errors['minlength']">La contraseña debe contener al menos 6 caracteres</div>
                                             <div *ngIf="f['confirm_password'].errors['mustMatch']">Las contraseñas no coinciden</div>
                                         </div>
                                     </div>
@@ -79,7 +80,7 @@
                             </div>
 
                             <div class="mt-4 pt-2 d-grid gap-2">
-                                <button class="btn btn-primary btn-lg gap-2" type="submit">Enviar</button>
+                                <button class="btn btn-primary btn-lg gap-2" >Enviar</button>
                             </div>
 
                         </form>

@@ -31,10 +31,11 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirm_password: ['', Validators.required]
-    }, {
-      Validator: MustMatch('password', 'confirm_password')
-    }
+      confirm_password: ['', [Validators.required, Validators.minLength(6)]]
+    },
+      {
+        validator: MustMatch('password', 'confirm_password')
+      }
     )
   }
 
@@ -48,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
     const user = this.registerForm.value;
     this.userService.register(user).subscribe((res: any) => {
-      if(res.status !== 'error') {
+      if (res.status !== 'error') {
         this.toastrSvc.toastr('success', 'Su cuenta ha sido creada')
         this.router.navigate(['login']);
       } else {
