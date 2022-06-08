@@ -22,6 +22,7 @@ import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetailsComponent } from './components/my-account/details/details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     AdminComponent,
     AdminNavbarComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
