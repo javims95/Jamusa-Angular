@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleGuard } from 'src/app/guards/role.guard';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { ToastrCustomService } from 'src/app/services/toastr-custom.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private roleGuard: RoleGuard,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private toastrSvc: ToastrCustomService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +39,12 @@ export class NavbarComponent implements OnInit {
 
   isAuth(): boolean {
     return this.userService.isAuth();
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.toastrSvc.toastr('info', 'Has cerrado sesión correctamente')
+    this.router.navigate(['/home']);
   }
 
 }

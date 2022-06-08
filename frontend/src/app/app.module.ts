@@ -20,6 +20,9 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
