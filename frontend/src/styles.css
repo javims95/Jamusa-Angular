@@ -1,3 +1,4 @@
+/* Clases personalizadas */
 .btn-outline-white {
     color: #fff !important;
     border-color: #fff !important;
@@ -17,3 +18,8 @@
     display: block;
     margin-top: 0;
  }
+
+/* Toastr */
+.toast-top-right {
+    top: 10% !important;
+}

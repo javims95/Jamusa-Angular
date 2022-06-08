@@ -21,7 +21,7 @@ export class UserService {
   }
 
   register(user:any) {
-    return this.http.post(`${this.URL}/user/register`, user);
+    return this.http.post(`${this.URL}/api/register`, user);
   }
 
   isAuth(): boolean {    

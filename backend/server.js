@@ -25,7 +25,7 @@ app.post('/api/change-password', async (req, res) => {
 
 	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
 		return res.json({
-			status: 'error', 
+			status: 'error',
 			error: 'Formato de contraseña incorrecta'
 		})
 	}
@@ -65,8 +65,8 @@ app.post('/api/login', async (req, res) => {
 		return res.json({ status: 'error', error: 'Usuario y/o contraseña incorrecto' })
 	}
 
+	// Compara la contraseña enviada por el usuario con la contraseña encriptada en la DDBB
 	if (await bcrypt.compare(password, user.password)) {
-		// the username, password combination is successful
 
 		const token = jwt.sign(
 			{
@@ -83,14 +83,26 @@ app.post('/api/login', async (req, res) => {
 })
 
 app.post('/api/register', async (req, res) => {
-	const { username, password: plainTextPassword } = req.body
+	const { name, surname, username, email, password: plainTextPassword } = req.body
+
+	if (!name || typeof name !== 'string') {
+		return res.json({ status: 'error', error: 'Nombre con formato incorrecto' })
+	}
+
+	if (!surname || typeof surname !== 'string') {
+		return res.json({ status: 'error', error: 'Apellidos con formato incorrecto' })
+	}
 
 	if (!username || typeof username !== 'string') {
-		return res.json({ status: 'error', error: 'Nombre de usuario incorrecto' })
+		return res.json({ status: 'error', error: 'Nombre de usuario con formato incorrecto' })
+	}
+
+	if (!email || typeof email !== 'string') {
+		return res.json({ status: 'error', error: 'Correo electrónico con formato incorrecto' })
 	}
 
 	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-		return res.json({ status: 'error', error: 'Contraseña incorrecta' })
+		return res.json({ status: 'error', error: 'Contraseña con formato incorrecto' })
 	}
 
 	if (plainTextPassword.length < 5) {
@@ -104,14 +116,17 @@ app.post('/api/register', async (req, res) => {
 
 	try {
 		const response = await User.create({
+			name,
+			surname,
 			username,
+			email,
 			password
 		})
 		console.log('Usuario creado correctamente: ', response)
 	} catch (error) {
 		if (error.code === 11000) {
 			// duplicate key
-			return res.json({ status: 'error', error: 'El nombre de usuario ya está en uso' })
+			return res.json({ status: 'error', error: 'El nombre de usuario o correo electrónico ya está en uso' })
 		}
 		throw error
 	}
