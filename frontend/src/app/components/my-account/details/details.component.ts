@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
+  name = 'Javi';
+  surname = '';
+  username = '';
+  email = '';
+
   constructor() { }
 
   ngOnInit(): void {
