@@ -20,6 +20,7 @@ app.use('/', express.static(path.join(__dirname, 'static')))
 app.use(bodyParser.json())
 app.use(cors())
 
+// Cambiar contraseña
 app.post('/api/change-password', async (req, res) => {
 	const { token, newpassword: plainTextPassword } = req.body
 
@@ -57,6 +58,7 @@ app.post('/api/change-password', async (req, res) => {
 	}
 })
 
+// Login
 app.post('/api/login', async (req, res) => {
 	const { username, password } = req.body
 	const user = await User.findOne({ username }).lean()
@@ -83,6 +85,7 @@ app.post('/api/login', async (req, res) => {
 	res.json({ status: 'error', error: 'Usuario y/o contraseña incorrecto' })
 })
 
+// Registro de un nuevo usuario
 app.post('/api/register', async (req, res) => {
 	const { name, surname, username, email, password: plainTextPassword, confirm_password } = req.body
 
@@ -140,6 +143,24 @@ app.post('/api/register', async (req, res) => {
 	}
 
 	res.json({ status: 'ok' })
+})
+
+// Obtener datos del usuario logueado
+app.get('/api/get-user-details/:id', async (req, res) => {
+
+	const _id = User.id
+	const id = req.params.id
+	
+	try {
+		const query = await User.find(
+			{_id: id}
+		)
+		res.json(query)
+		console.log(query);
+	} catch (error) {
+		console.log(error)
+		res.json({ status: 'error', error: 'Usuario no encontrado' })
+	}
 })
 
 app.listen(process.env.PORT, () => {
