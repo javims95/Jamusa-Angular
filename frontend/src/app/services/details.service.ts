@@ -19,4 +19,11 @@ export class DetailsService {
     return this.http.get(`${this.URL}/api/get-user-details/${id}`)
   }
 
+  updateUserDetails(dataForm) {
+    const id = this.roleGuard.decodeToken()['id']
+    dataForm['id'] = id
+
+    return this.http.post(`${this.URL}/api/update-user-details`, dataForm)
+  }
+
 }

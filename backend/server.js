@@ -9,6 +9,12 @@ const User = require('./model/user')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const _id = User.id
+// const _name = User.name
+// const _surname = User.surname
+// const _username = User.username
+// const _email = User.email
+
 mongoose.connect(process.env.urlDB, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
@@ -148,18 +154,63 @@ app.post('/api/register', async (req, res) => {
 // Obtener datos del usuario logueado
 app.get('/api/get-user-details/:id', async (req, res) => {
 
-	const _id = User.id
 	const id = req.params.id
-	
+
 	try {
 		const query = await User.find(
-			{_id: id}
+			{ _id: id }
 		)
 		res.json(query)
 		console.log(query);
 	} catch (error) {
 		console.log(error)
 		res.json({ status: 'error', error: 'Usuario no encontrado' })
+	}
+})
+
+// Actualizar datos del usuario logueado
+app.post('/api/update-user-details', async (req, res) => {
+	const updatedName = req.body.name
+	const updatedSurname = req.body.surname
+	const updatedUsername = req.body.username
+	const updatedEmail = req.body.email
+	const id = req.body.id
+
+	if (id !== '' && updatedName !== '' && updatedSurname !== '' && updatedUsername !== '' && updatedEmail) {
+
+		try {
+
+			const query = await User.updateOne(
+				{ _id: id },
+				{
+					name: updatedName,
+					surname: updatedSurname,
+					username: updatedUsername,
+					email: updatedEmail
+				}
+			);
+
+			if (query.nModified > 0) {
+				res.json({ status: 'ok' })
+			} else {
+				res.json({ status: 'warning', error: 'Nada que actualizar' })
+			}
+
+		} catch (error) {
+			if (error.code === 11000 && error.keyPattern['email'] == 1) {
+				res.json({ status: 'error', error: 'El email ya está en uso' })
+
+			} else if (error.code === 11000 && error.keyPattern['username'] == 1) {
+				res.json({ status: 'error', error: 'El nombre de usuario ya está en uso' })
+
+			} else {
+				res.json({ status: 'error', error: 'No se han modificado los datos' })
+			}
+			res.json({ status: 'error', error: 'No se han modificado los datos' })			
+		}
+
+	} else {
+		res.json({ status: 'error', error: 'Los datos a actualizar no pueden estar vacíos' })
 	}
 })
 

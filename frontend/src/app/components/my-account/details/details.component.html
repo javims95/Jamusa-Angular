@@ -3,20 +3,20 @@
 <div class="container pt-1 pb-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
         <div class="card-body p-4 p-md-3">
-            <form>
+            <form [formGroup]="updateDataForm" (ngSubmit)="updateData()">
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Nombre</label>
                         <div class="form-outline mb-4">
-                            <input type="text" class="form-control form-control-lg" value="{{name}}" />
+                            <input formControlName="name" type="text" class="form-control form-control-lg"  />
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Apellidos</label>
                         <div class="form-outline mb-4">
-                            <input type="text" class="form-control form-control-lg" value="{{surname}}" />
+                            <input formControlName="surname" type="text" class="form-control form-control-lg" />
                         </div>
                     </div>
                 </div>
@@ -25,14 +25,14 @@
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Nombre de Usuario</label>
                         <div class="form-outline mb-4">
-                            <input type="text" class="form-control form-control-lg" value="{{username}}" />
+                            <input formControlName="username" type="text" class="form-control form-control-lg" />                            
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Correo Electrónico</label>
                         <div class="form-outline mb-4">
-                            <input type="email" class="form-control form-control-lg" value="{{email}}" />
+                            <input formControlName="email" type="email" class="form-control form-control-lg" />         
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,6 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { OrdersComponent } from './components/my-account/orders/orders.component';
 import { ResetPasswordComponent } from './components/my-account/reset-password/reset-password.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
