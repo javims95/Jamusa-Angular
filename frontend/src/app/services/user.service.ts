@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import decode from 'jwt-decode';
 
 // Providers
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -30,5 +31,13 @@ export class UserService {
       return false;
     }
     return true;
+  }
+
+  decodeToken() {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      const tokenDecoded: any = decode(token!);
+      return tokenDecoded;
+    }
   }
 }

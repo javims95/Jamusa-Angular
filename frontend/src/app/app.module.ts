@@ -10,6 +10,11 @@ import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
+import { DetailsComponent } from './components/my-account/details/details.component';
+import { ChangePasswordComponent } from './components/my-account/change-password/change-password.component';
+import { DesktopComponent } from './components/my-account/desktop/desktop.component';
+import { AddressComponent } from './components/my-account/address/address.component';
+import { OrdersComponent } from './components/my-account/orders/orders.component';
 
 // Modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,8 +27,6 @@ import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DetailsComponent } from './components/my-account/details/details.component';
-import { ChangePasswordComponent } from './components/my-account/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { ChangePasswordComponent } from './components/my-account/change-password
     FooterComponent,
     AdminComponent,
     AdminNavbarComponent,
+    DesktopComponent,
+    OrdersComponent,
+    AddressComponent,
     DetailsComponent,
     ChangePasswordComponent
   ],

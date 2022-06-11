@@ -21,8 +21,13 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword() {
 
-    if(this.password !== this.confirm_password) {
+    if (this.password !== this.confirm_password) {
       this.notificationsSvc.toastr('error', 'Las contraseñas no coinciden', 'Error')
+    } else if (this.password == '' || this.confirm_password == '') {
+      this.notificationsSvc.toastr('error', 'La contraseña no puede estar vacía', 'Error')
+    } else if (this.password.length < 6 || this.confirm_password.length < 6) {
+      this.notificationsSvc.toastr('error', 'Debe tener como mínimo 6 caracteres', 'Error')
+
     }
 
   }

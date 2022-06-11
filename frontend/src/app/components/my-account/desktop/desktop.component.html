@@ -1,6 +1,9 @@
 <div class="tab-pane fade show" id="desktop">
   <h4 class="mt-2">Escritorio</h4>
-  <p>Hola admin95 (¿no eres admin95? <a  href="#logout">Cerrar sesión</a>)</p>
-  <p>Desde el escritorio de tu cuenta puedes ver tus pedidos recientes, gestionar tus direcciones de envío y
-      facturación y editar tu contraseña y los detalles de tu cuenta.</p>
+  <p>Hola <b>{{username}}</b> (¿no eres <b>{{username}}</b>? <a href="#logout">Cerrar sesión</a>)</p>
+  <p>
+    Desde el escritorio de tu cuenta puedes ver tus <a routerLink="/my-account/orders">pedidos</a> recientes, gestionar tus 
+    <a routerLink="/my-account/address">direcciones</a> de envío, <a routerLink="/my-account/change-password">cambiar tu contraseña</a> y los 
+    <a routerLink="/my-account/details">detalles de tu cuenta</a>.
+  </p>
 </div>
