@@ -23,6 +23,7 @@ import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailsComponent } from './components/my-account/details/details.component';
+import { ChangePasswordComponent } from './components/my-account/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +37,14 @@ import { DetailsComponent } from './components/my-account/details/details.compon
     AdminComponent,
     AdminNavbarComponent,
     DetailsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
-    HttpClientModule,
     ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     

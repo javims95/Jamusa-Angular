@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrCustomService } from 'src/app/services/toastr-custom.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-my-account',
@@ -11,7 +11,7 @@ export class MyAccountComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private toastrSvc: ToastrCustomService
+    private notificationsSvc: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class MyAccountComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    this.toastrSvc.toastr('info', 'Has cerrado sesión correctamente')
+    this.notificationsSvc.toastr('info', 'Has cerrado sesión correctamente')
     this.router.navigate(['/home']);
   }
 

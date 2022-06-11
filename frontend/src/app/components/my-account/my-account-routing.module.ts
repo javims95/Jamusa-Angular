@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AddressComponent } from './address/address.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { DetailsComponent } from './details/details.component';
 import { OrdersComponent } from './orders/orders.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -23,8 +23,8 @@ const routes: Routes = [
     component: DetailsComponent
   },
   {
-    path:'reset-password', 
-    component: ResetPasswordComponent
+    path:'change-password', 
+    component: ChangePasswordComponent
   },
 ];
 

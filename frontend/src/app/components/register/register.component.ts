@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrCustomService } from 'src/app/services/toastr-custom.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { UserService } from 'src/app/services/user.service';
 
 // Custom validator for password
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private toastrSvc: ToastrCustomService
+    private notificationsSvc: NotificationsService
   ) { }
 
   ngOnInit() {
@@ -50,10 +50,10 @@ export class RegisterComponent implements OnInit {
     const user = this.registerForm.value;
     this.userService.register(user).subscribe((res: any) => {
       if (res.status !== 'error') {
-        this.toastrSvc.toastr('success', 'Su cuenta ha sido creada')
+        this.notificationsSvc.toastr('success', 'Su cuenta ha sido creada')
         this.router.navigate(['login']);
       } else {
-        this.toastrSvc.toastr('error', res.error)
+        this.notificationsSvc.toastr('error', res.error)
       }
     });
   }

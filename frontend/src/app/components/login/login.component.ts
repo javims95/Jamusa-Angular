@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { ToastrCustomService } from 'src/app/services/toastr-custom.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private toastrSvc: ToastrCustomService
+    private notificationsSvc: NotificationsService
   ) { }
 
   ngOnInit() {
@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     const user = this.loginForm.value;
     this.userService.login(user).subscribe((res: any) => {
       if (res.token !== undefined) {    
-        this.toastrSvc.toastr('success', 'Te has logueado correctamente');
+        this.notificationsSvc.toastr('success', 'Te has logueado correctamente');
         localStorage.setItem('token', res.token);
         this.router.navigate(['my-account']);
       } else {
-        this.toastrSvc.toastr('error', res.error)
+        this.notificationsSvc.toastr('error', res.error)
         localStorage.removeItem('token');
       }
 

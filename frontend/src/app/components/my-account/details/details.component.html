@@ -3,13 +3,21 @@
 <div class="container pt-1 pb-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
         <div class="card-body p-4 p-md-3">
+            
+            <!-- Alert -->
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                Aquí puedes actualizar los datos de tu cuenta
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <!-- Alert -->
+
             <form [formGroup]="updateDataForm" (ngSubmit)="updateData()">
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Nombre</label>
                         <div class="form-outline mb-4">
-                            <input formControlName="name" type="text" class="form-control form-control-lg"  />
+                            <input formControlName="name" type="text" class="form-control form-control-lg" />
                         </div>
                     </div>
 
@@ -25,19 +33,19 @@
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Nombre de Usuario</label>
                         <div class="form-outline mb-4">
-                            <input formControlName="username" type="text" class="form-control form-control-lg" />                            
+                            <input formControlName="username" type="text" class="form-control form-control-lg" />
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Correo Electrónico</label>
                         <div class="form-outline mb-4">
-                            <input formControlName="email" type="email" class="form-control form-control-lg" />         
+                            <input formControlName="email" type="email" class="form-control form-control-lg" />
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-4 pt-2 d-grid gap-2">
+                <div class="d-grid gap-2">
                     <button class="btn btn-primary btn-lg gap-2">Actualizar</button>
                 </div>
 

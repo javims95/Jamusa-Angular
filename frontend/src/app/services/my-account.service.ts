@@ -5,7 +5,7 @@ import { RoleGuard } from '../guards/role.guard';
 @Injectable({
   providedIn: 'root'
 })
-export class DetailsService {
+export class MyAccountService {
 
   private URL = 'http://localhost:3000';
 

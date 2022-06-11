@@ -4,11 +4,11 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddressComponent } from './components/my-account/address/address.component';
+import { ChangePasswordComponent } from './components/my-account/change-password/change-password.component';
 import { DesktopComponent } from './components/my-account/desktop/desktop.component';
 import { DetailsComponent } from './components/my-account/details/details.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { OrdersComponent } from './components/my-account/orders/orders.component';
-import { ResetPasswordComponent } from './components/my-account/reset-password/reset-password.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RoleGuard } from './guards/role.guard';
 
@@ -41,8 +41,8 @@ const routes: Routes = [
         component: DetailsComponent
       },
       {
-        path:'reset-password', 
-        component: ResetPasswordComponent
+        path:'change-password', 
+        component: ChangePasswordComponent
       },
     ]
   },
