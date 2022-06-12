@@ -29,4 +29,8 @@ export class NavbarComponent implements OnInit {
     return this.userService.isAuth();
   }
 
+  isHomeRoute() {
+    return this.router.url === '/';
+  }
+
 }

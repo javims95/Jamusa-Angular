@@ -38,3 +38,8 @@
         </div>
     </div>
 </nav>
+
+<!-- Breadcrumb -->
+<div *ngIf="!isHomeRoute()" id="breadcrumb" class="text-center mt-2">
+    <app-breadcrumb></app-breadcrumb>
+</div>

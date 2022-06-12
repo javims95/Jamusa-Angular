@@ -20,6 +20,7 @@ import { DesktopComponent } from './components/my-account/desktop/desktop.compon
 import { AddressComponent } from './components/my-account/address/address.component';
 import { OrdersComponent } from './components/my-account/orders/orders.component';
 import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.component';
+import { BreadcrumbComponent } from './layouts/breadcrumb/breadcrumb.component';
 
 
 // Providers
@@ -44,7 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OrdersComponent,
     AddressComponent,
     DetailsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

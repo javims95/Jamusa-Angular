@@ -19,38 +19,69 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   },
+  
   // My account
   {
     path: 'my-account',
+    redirectTo: 'my-account/desktop'
+  },
+  {
+    path: 'my-account',
     component: MyAccountComponent,
+    data: {
+      breadcrumb: 'Mi cuenta',
+      icon: 'fa-solid fa-user'
+    },
     children: [
       {
-        path:'desktop', 
-        component: DesktopComponent
+        path: 'desktop',
+        component: DesktopComponent,
+        data: {
+          breadcrumb: 'Escritorio',
+          icon: 'fa-solid fa-gauge-high'
+        },
       },
       {
-        path:'orders', 
-        component: OrdersComponent
+        path: 'orders',
+        component: OrdersComponent,
+        data: {
+          breadcrumb: 'Pedidos',
+          icon: 'fa-solid fa-basket-shopping'
+        },
       },
       {
-        path:'address', 
-        component: AddressComponent
+        path: 'address',
+        component: AddressComponent,
+        data: {
+          breadcrumb: 'Direcciones',
+          icon: 'fa-solid fa-address-card'
+        },
       },
       {
-        path:'details', 
-        component: DetailsComponent
+        path: 'details',
+        component: DetailsComponent,
+        data: {
+          breadcrumb: 'Detalles de mi cuenta',
+          icon: 'fa-solid fa-circle-info'
+        },
       },
       {
-        path:'change-password', 
-        component: ChangePasswordComponent
+        path: 'change-password',
+        component: ChangePasswordComponent,
+        data: {
+          breadcrumb: 'Cambiar contraseña',
+          icon: 'fa-solid fa-lock'
+        },
       },
     ]
   },
+
   // Login
   {
     path: 'login',
     component: LoginComponent
   },
+
   // Registro
   {
     path: 'register',
@@ -62,8 +93,9 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [RoleGuard],
-    data: { expectedRole: 'admin'}
+    data: { expectedRole: 'admin' }
   },
+
   {
     path: '**',
     redirectTo: '/',

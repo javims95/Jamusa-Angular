@@ -15,7 +15,6 @@ export class MyAccountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate(['my-account/desktop'])
   }
 
   logout() {
