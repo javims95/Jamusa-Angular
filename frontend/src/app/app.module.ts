@@ -1,6 +1,10 @@
+// Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
+// Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,15 +19,12 @@ import { ChangePasswordComponent } from './components/my-account/change-password
 import { DesktopComponent } from './components/my-account/desktop/desktop.component';
 import { AddressComponent } from './components/my-account/address/address.component';
 import { OrdersComponent } from './components/my-account/orders/orders.component';
+import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.component';
 
-// Modules
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 // Providers
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,7 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
     
   ],
   providers: [
