@@ -28,7 +28,10 @@ app.use(cors())
 
 // Cambiar contraseña
 app.post('/api/change-password', async (req, res) => {
-	const { token, newpassword: plainTextPassword } = req.body
+	// const { token, newpassword: plainTextPassword } = req.body
+	const token = req.body.token
+	const plainTextPassword = req.body.password
+	console.log(token + ' ' +  plainTextPassword);
 
 	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
 		return res.json({
@@ -60,7 +63,7 @@ app.post('/api/change-password', async (req, res) => {
 		res.json({ status: 'ok' })
 	} catch (error) {
 		console.log(error)
-		res.json({ status: 'error', error: ';))' })
+		res.json({ status: 'error', error: 'Error de servidor interno. Su contraseña no se ha actualizado' })
 	}
 })
 

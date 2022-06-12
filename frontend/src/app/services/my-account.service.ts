@@ -14,6 +14,7 @@ export class MyAccountService {
     private roleGuard: RoleGuard
   ) { }
 
+  // Details
   getUserDetails() {
     const id = this.roleGuard.decodeToken()['id']
     return this.http.get(`${this.URL}/api/get-user-details/${id}`)
@@ -24,6 +25,13 @@ export class MyAccountService {
     dataForm['id'] = id
 
     return this.http.post(`${this.URL}/api/update-user-details`, dataForm)
+  }
+
+  // Change password
+  changePassword(dataChangePassword) {
+    
+    
+    return this.http.post(`${this.URL}/api/change-password`, dataChangePassword)
   }
 
 }
