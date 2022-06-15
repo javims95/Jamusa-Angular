@@ -6,13 +6,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 // Components
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import { FooterComponent } from './layouts/footer/footer.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { DetailsComponent } from './components/my-account/details/details.component';
 import { ChangePasswordComponent } from './components/my-account/change-password/change-password.component';
@@ -20,7 +20,7 @@ import { DesktopComponent } from './components/my-account/desktop/desktop.compon
 import { AddressComponent } from './components/my-account/address/address.component';
 import { OrdersComponent } from './components/my-account/orders/orders.component';
 import { AdminNavbarComponent } from './admin/layouts/admin-navbar/admin-navbar.component';
-import { BreadcrumbComponent } from './layouts/breadcrumb/breadcrumb.component';
+import { BreadcrumbComponent } from './components/layouts/breadcrumb/breadcrumb.component';
 
 
 // Providers
