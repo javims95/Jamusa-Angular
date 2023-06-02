@@ -1,27 +1,42 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Este es el frontend de una aplicación desarrollada utilizando Angular. Proporciona una interfaz de usuario interactiva para interactuar con el backend y brinda características como servicios, guards, zona de administración y diversos componentes.
 
-## Development server
+## Características
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+El frontend consta de los siguientes elementos principales:
 
-## Code scaffolding
+- **Servicios**: Los servicios son clases que se utilizan para compartir datos y lógica entre diferentes componentes. Proporcionan funcionalidades comunes y facilitan la comunicación con el backend.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Guards**: Los guards son utilizados para proteger las rutas y controlar el acceso a determinadas funcionalidades de la aplicación. Se encargan de verificar si un usuario tiene los permisos necesarios para acceder a una ruta o realizar una acción específica.
 
-## Build
+- **Zona de Administración**: La zona de administración es una sección especial de la aplicación destinada a usuarios con privilegios de administrador. Aquí se encuentran funcionalidades y vistas específicas para administrar y configurar la aplicación.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Componentes**: El frontend cuenta con varios componentes que proporcionan la interfaz de usuario para diferentes partes de la aplicación.
+  - **Home**: Componente que muestra la página de inicio de la aplicación.
+  - **Layouts**: Componentes de diseño que definen la estructura visual de las páginas.
+  - **Login**: Componente de inicio de sesión que permite a los usuarios autenticarse en la aplicación.
+  - **My Account**: Componente que muestra la información y configuración de la cuenta del usuario.
+  - **Register**: Componente de registro que permite a los usuarios crear nuevas cuentas en la aplicación.
 
-## Running unit tests
+## Estructura del Proyecto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+El proyecto sigue una estructura típica de una aplicación Angular:
 
-## Running end-to-end tests
+- **src**: Esta carpeta contiene todo el código fuente de la aplicación.
+  - **app**: Aquí se encuentran los archivos principales de la aplicación.
+    - **services**: Contiene los servicios utilizados para comunicarse con el backend y compartir datos entre componentes.
+    - **guards**: Contiene los guards utilizados para proteger las rutas y controlar el acceso.
+    - **admin**: Carpeta que contiene los componentes y módulos relacionados con la zona de administración.
+    - **components**: Carpeta que contiene los diferentes componentes de la aplicación.
+    - **layouts**: Carpeta que contiene los componentes de diseño utilizados para estructurar las páginas.
+  - **assets**: Esta carpeta contiene archivos estáticos como imágenes, fuentes, etc.
+  - **styles**: Aquí se encuentran los archivos de estilos CSS para la aplicación.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **node_modules**: Esta carpeta es generada automáticamente por npm y contiene todas las dependencias del proyecto.
 
-## Further help
+- **package.json**: Archivo de configuración de npm que contiene las dependencias, scripts y metadatos del proyecto.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **README.md**: Archivo de documentación que proporciona información sobre el proyecto, su configuración y uso.
+
+Esta estructura de carpetas proporciona una organización lógica y modular para el frontend de tu aplicación Angular. Asegúrate de ajustarla según las necesidades específicas de tu proyecto.
