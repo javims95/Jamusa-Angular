@@ -20,19 +20,3 @@ El proyecto sigue la siguiente estructura de carpetas y archivos:
 - **package.json**: Archivo de configuración de npm que contiene las dependencias y scripts del proyecto.
 
 - **package-lock.json**: Archivo generado automáticamente por npm para asegurar la consistencia de las dependencias.
-
-
-## Estructura del proyecto
-
-backend/
-├── config/
-│   └── config.js
-├── model/
-│   ├── product.js
-│   └── user.js
-├── routes/
-│   ├── product.js
-│   └── user.js
-├── package.json
-├── package-lock.json
-└── README.md
